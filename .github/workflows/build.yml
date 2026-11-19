@@ -91,4 +91,5 @@ jobs:
         with:
           tag_name: ${{ inputs.release_tag || github.ref_name }}
           files: artifacts/*
-          generate_release_notes: true
+          # only attach the binaries; never touch the title or notes you wrote
+          generate_release_notes: false
