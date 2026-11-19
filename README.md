@@ -1,4 +1,5 @@
 # Samsung S-Series X-ray Panel Controller
+<img width="800" height="600" alt="IMG_20261119_231641" src="https://github.com/user-attachments/assets/13d3882e-3e6f-444d-b9bc-8f62b7d82f3c" />
 
 [![Build](https://github.com/gamerpaddy/Samsung-S-Xraypanel-Controller/actions/workflows/build.yml/badge.svg)](https://github.com/gamerpaddy/Samsung-S-Xraypanel-Controller/actions/workflows/build.yml)
 
