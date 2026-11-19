@@ -139,7 +139,7 @@ isolated relay/optocoupler stage and keep your own safety interlocks in the loop
 Install the *AccelStepper* library in the Arduino IDE (Library Manager) before compiling.
 
 ## Noise2Noise (experimental)
-
+https://github.com/NVlabs/noise2noise
 > **Experimental. It may not work and can make your images worse.** There are no pretrained weights; you have to
 > train a model on your own frames, and the result depends heavily on your data. Always keep the raw frame.
 
