@@ -1,0 +1,19 @@
+# build output
+/target
+/target-*/
+
+# your data and settings (can contain network details and images)
+settings.json
+shots.csv
+*.bin
+*.tif
+*.tiff
+capture_*
+noise2noise_*.safetensors
+*.safetensors
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

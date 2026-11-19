@@ -1,0 +1,38 @@
+[package]
+name = "s4335w"
+version = "0.1.0"
+edition = "2021"
+description = "Controller and viewer for Samsung S-series flat-panel X-ray detectors (experimental Noise2Noise denoising)"
+license = "Unlicense"
+repository = "https://github.com/gamerpaddy/Samsung-S-Xraypanel-Controller"
+readme = "README.md"
+
+[features]
+default = []
+# GPU training/inference for the Noise2Noise network (needs the CUDA toolkit at build time)
+cuda = ["candle-core/cuda", "candle-nn/cuda"]
+
+[dependencies]
+eframe = "0.31"
+rfd = "0.15"
+rayon = "1.10"
+serialport = "4.5"
+image = { version = "0.25", default-features = false, features = ["png", "tiff"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+anyhow = "1"
+rand = "0.8"
+candle-core = "0.9"
+candle-nn = "0.9"
+
+[profile.dev]
+opt-level = 2
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 4
