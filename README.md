@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/gamerpaddy/Samsung-S-Xraypanel-Controller/actions/workflows/build.yml/badge.svg)](https://github.com/gamerpaddy/Samsung-S-Xraypanel-Controller/actions/workflows/build.yml)
 
-A fast, dark-mode desktop program (Rust + [egui](https://github.com/emilk/egui)) for **Samsung S-series flat-panel X-ray detectors**
+A desktop program (Rust + [egui](https://github.com/emilk/egui)) for **Samsung S-series flat-panel X-ray detectors**
 (developed and tested with an **S4335W**). It talks to the panel over your network, captures raw 16-bit frames,
 corrects and displays them, can drive a motorised turntable for CT-style scans, and can pulse an X-ray source in
 sync with the panel.
@@ -11,13 +11,13 @@ sync with the panel.
 > observing and measuring one panel. Use it at your own risk.
 >
 > **X-ray safety.** The program can trigger an X-ray source through hardware you build yourself (see
-> [Turntable and X-ray trigger](#turntable-and-x-ray-trigger-arduino)). X-rays are dangerous. Follow your local
-> regulations, use proper shielding and interlocks, and never rely on this software as a safety device.
+> [Turntable and X-ray trigger](#turntable-and-x-ray-trigger-arduino)). X-rays are dangerous. Use proper shielding and interlocks, and never rely on this software as a safety device. Not for Medical purposes.
 >
 > **Noise2Noise denoising is experimental** and may not work (it can even make images worse). See
 > [Noise2Noise (experimental)](#noise2noise-experimental).
 
 <!-- Screenshots: add them to docs/screenshots/ and reference them here. -->
+<img width="2080" height="1244" alt="s4335w_ewJ9m791wu" src="https://github.com/user-attachments/assets/157f2010-8643-49bc-997c-dd20eef12168" />
 
 ## What it does
 
@@ -49,13 +49,14 @@ sync with the panel.
   - You need the panel's network settings (its IP address and, for wireless, the network credentials).
     They are stored in the panel's own firmware / configuration files that belong to your unit (for example
     `system_setting.sh` and the `wpa_supplicant` configuration), not in this repository. Look there, or in the
-    documentation that came with your panel.
+    documentation that came with your panel. Telnet is root : xray2012
   - Enter the panel's IP in **Connection** inside the program (the default `192.168.1.100` is only a
     placeholder).
 - Optional, for turntable scans and synchronised exposures: an **Arduino** with the sketch in
   [`arduino/xrayturntable`](arduino/xrayturntable) and a USB serial connection.
 - Windows or Linux. Tested by the author on Windows only; Linux builds are produced by CI but are untested on
   real hardware.
+<img width="2080" height="1244" alt="s4335w_5HucevzjJF" src="https://github.com/user-attachments/assets/abd9bcc0-6e93-48df-aefe-6537efa6a72a" />
 
 ## Build and run
 
@@ -117,6 +118,9 @@ A good starting point with the stock window: **pulse 200 ms, trigger delay 565 m
 (drag the handles) and the shot log to tune it for your setup. The panel also needs a few seconds between
 captures; the program waits for it automatically and never fires the source if the panel did not acknowledge the
 start.
+
+<img width="874" height="738" alt="s4335w_eVAxnj3ttb" src="https://github.com/user-attachments/assets/d91373a6-c5ee-4fb3-b31a-0f2362c10d2c" />
+
 
 ## Turntable and X-ray trigger (Arduino)
 
