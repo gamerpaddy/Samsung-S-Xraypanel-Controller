@@ -3,9 +3,14 @@ name: Build
 on:
   push:
     branches: [main]
-    tags: ["v*"]
+    tags: ["*"]
   pull_request:
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Existing release tag to attach the Windows/Linux binaries to (optional)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -72,7 +77,7 @@ jobs:
 
   release:
     name: Publish release
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/') || inputs.release_tag != ''
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -84,5 +89,6 @@ jobs:
           merge-multiple: true
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.release_tag || github.ref_name }}
           files: artifacts/*
           generate_release_notes: true
